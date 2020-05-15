@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT(
       LT(_RAISE, KC_ESC), KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                                                                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_PIPE,
       KC_TAB,             KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                                                                            KC_H,    KC_J,    KC_K,    KC_L,    TD(TD_SMCL_NUMS), TD(TD_COMMA_SYMBOLS),
-      MT(MOD_LSFT, KC_CAPSLOCK),             KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   LM(_RAISE, MOD_LGUI),    LM(_RAISE, MOD_LALT),                                                    LM(_LOWER, MOD_LGUI), LM(_RAISE, MOD_LGUI), KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MT(MOD_LSFT, KC_MINS),
+      MT(MOD_LSFT, KC_CAPSLOCK),   KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   LM(_RAISE, MOD_LGUI),    LM(_RAISE, MOD_LALT),     LM(_LOWER, MOD_LGUI), LM(_RAISE, MOD_LGUI), KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MT(MOD_LSFT, KC_MINS),
                                         KC_MPLY, KC_LCPO, MT(MOD_LGUI, KC_BSPC), LT(_LOWER, KC_SPC), LT(_RAISE, KC_ENT),       LT(_LOWER, KC_ENT), LT(_RAISE, KC_BSPC),  MT(MOD_LGUI, KC_SPC), KC_RAPC, KC_MNXT
     ),
 /*
@@ -75,8 +75,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_LOWER] = LAYOUT(
     TO(_QWERTY), KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                     _______, _______, _______, _______, _______, KC_BSLS,
       _______, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                                      KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_PERC, TD(TD_COMMA_SYMBOLS),
-      _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______, _______, _______, _______, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-                                 _______, _______, _______, KC_SCLN, KC_EQL,  KC_EQL,  KC_SCLN, KC_DEL, _______, _______
+      _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______, _______, _______, KC_LCTL, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
+                                 _______, _______, _______, KC_SCLN, KC_EQL,  KC_EQL,  A(KC_BSPC), KC_DEL, _______, KC_MUTE
     ),
 /*
  * Raise Layer: Number keys, media, navigation
@@ -88,15 +88,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |      | Mute | VolDn|      |      |  |      |      |      | wordl| wordr| HOME | END  | SEL DN |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |      |  DEL |      |      |
+ *                        |      |      |      |      |      |  |      |      |  DEL |      | prev |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_RAISE] = LAYOUT(
     TO(_QWERTY), KC_1, 	  KC_2,    KC_3,    KC_4,    KC_5,                                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-      _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU,                                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, TD(TD_SMCL_NUMS), A(KC_UP),
-      _______, _______, _______, _______, KC_MUTE, KC_VOLD, _______, _______, _______, _______, _______, A(KC_LEFT), A(KC_RIGHT), G(KC_LEFT), G(KC_RIGHT), A(KC_DOWN),
-                                 _______, _______, _______, _______, _______, _______, _______, KC_DEL, _______, _______
+      _______, _______, S(G(KC_LEFT)), S(A(KC_LEFT)), S(A(KC_RIGHT)), S(G(KC_RIGHT)),                                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, TD(TD_SMCL_NUMS), A(KC_UP),
+      _______, _______, _______, _______, KC_MUTE, KC_VOLD, _______, _______, _______, KC_LCTL, G(KC_LEFT), A(KC_LEFT), A(KC_RIGHT), G(KC_RIGHT), _______, A(KC_DOWN),
+                                 _______, _______, _______, _______, _______, _______, _______, KC_DEL, _______, KC_MPRV
     ),
 /*
  * Adjust Layer: Function keys, RGB
@@ -237,9 +237,9 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                 // History scrubbing. For Adobe products, hold shift while moving
                 // backward to go forward instead.
                 if (clockwise) {
-                    tap_code16(C(KC_LEFT));
+                    tap_code16(C(KC_RGHT));
                 } else {
-                    tap_code16(C(KC_RIGHT));
+                    tap_code16(C(KC_LEFT));
                 }
                 break;
         }
