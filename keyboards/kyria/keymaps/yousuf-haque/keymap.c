@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       LT(_RAISE, KC_ESC), KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                                                                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_PIPE,
       KC_TAB,             KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                                                                            KC_H,    KC_J,    KC_K,    KC_L,    TD(TD_SMCL_NUMS), TD(TD_COMMA_SYMBOLS),
       MT(MOD_LSFT, KC_CAPSLOCK),             KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   LM(_RAISE, MOD_LGUI),    LM(_RAISE, MOD_LALT),                                                    LM(_LOWER, MOD_LGUI), LM(_RAISE, MOD_LGUI), KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MT(MOD_LSFT, KC_MINS),
-                                        KC_MPLY, KC_LCPO, MT(MOD_LGUI, KC_BSPC), LT(_LOWER, KC_SPC), LT(_RAISE, KC_ENT),       LT(_LOWER, KC_ENT), LT(_RAISE, KC_BSPC),  KC_SPC, KC_RAPC, KC_MNXT
+                                        KC_MPLY, KC_LCPO, MT(MOD_LGUI, KC_BSPC), LT(_LOWER, KC_SPC), LT(_RAISE, KC_ENT),       LT(_LOWER, KC_ENT), LT(_RAISE, KC_BSPC),  MT(MOD_LGUI, KC_SPC), KC_RAPC, KC_MNXT
     ),
 /*
  * Lower Layer: Symbols
