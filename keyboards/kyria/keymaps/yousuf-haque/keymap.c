@@ -216,12 +216,34 @@ void oled_task_user(void) {
 void encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         // Volume control
-
-        if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
-            tap_code(KC_VOLU);
+        switch (biton32(layer_state)) {
+            case _QWERTY:
+                // Move whole words. Hold shift to select while moving.
+                if (clockwise) {
+                    tap_code(KC_VOLD);
+                } else {
+                    tap_code(KC_VOLU);
+                }
+                break;
+            case _RAISE:
+                // Move whole words. Hold shift to select while moving.
+                if (clockwise) {
+                    tap_code16(S(KC_TAB));
+                } else {
+                    tap_code16(KC_TAB);
+                }
+                break;
+            default:
+                // History scrubbing. For Adobe products, hold shift while moving
+                // backward to go forward instead.
+                if (clockwise) {
+                    tap_code16(C(KC_LEFT));
+                } else {
+                    tap_code16(C(KC_RIGHT));
+                }
+                break;
         }
+
     }
     else if (index == 1) {
         // Page up/Page down
