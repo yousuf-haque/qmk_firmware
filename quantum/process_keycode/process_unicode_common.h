@@ -24,13 +24,13 @@
 
 // Keycodes used for starting Unicode input on different platforms
 #ifndef UNICODE_KEY_MAC
-#    define UNICODE_KEY_MAC KC_LALT
+#    define UNICODE_KEY_MAC KC_LEFT_ALT
 #endif
 #ifndef UNICODE_KEY_LNX
 #    define UNICODE_KEY_LNX LCTL(LSFT(KC_U))
 #endif
 #ifndef UNICODE_KEY_WINC
-#    define UNICODE_KEY_WINC KC_RALT
+#    define UNICODE_KEY_WINC KC_RIGHT_ALT
 #endif
 
 // Comma-delimited, ordered list of input modes selected for use (e.g. in cycle)
@@ -59,12 +59,12 @@
 #define UC_OSX UC_MAC
 
 enum unicode_input_modes {
-    UC_MAC,    // macOS using Unicode Hex Input
-    UC_LNX,    // Linux using IBus
-    UC_WIN,    // Windows using EnableHexNumpad
-    UC_BSD,    // BSD (not implemented)
-    UC_WINC,   // Windows using WinCompose (https://github.com/samhocevar/wincompose)
-    UC__COUNT  // Number of available input modes (always leave at the end)
+    UC_MAC,   // macOS using Unicode Hex Input
+    UC_LNX,   // Linux using IBus
+    UC_WIN,   // Windows using EnableHexNumpad
+    UC_BSD,   // BSD (not implemented)
+    UC_WINC,  // Windows using WinCompose (https://github.com/samhocevar/wincompose)
+    UC__COUNT // Number of available input modes (always leave at the end)
 };
 
 typedef union {
@@ -75,12 +75,11 @@ typedef union {
 } unicode_config_t;
 
 extern unicode_config_t unicode_config;
-extern uint8_t          unicode_saved_mods;
 
 void    unicode_input_mode_init(void);
 uint8_t get_unicode_input_mode(void);
 void    set_unicode_input_mode(uint8_t mode);
-void    cycle_unicode_input_mode(uint8_t offset);
+void    cycle_unicode_input_mode(int8_t offset);
 void    persist_unicode_input_mode(void);
 
 void unicode_input_start(void);
@@ -89,6 +88,8 @@ void unicode_input_cancel(void);
 
 void register_hex(uint16_t hex);
 void register_hex32(uint32_t hex);
+void register_unicode(uint32_t code_point);
+
 void send_unicode_hex_string(const char *str);
 void send_unicode_string(const char *str);
 
