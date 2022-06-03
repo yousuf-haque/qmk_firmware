@@ -72,12 +72,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  *
+ */
     [_LOWER] = LAYOUT(
     TO(_QWERTY), KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                     _______, _______, _______, _______, _______, KC_BSLS,
       _______, KC_HASH, KC_DLR, KC_LBRC, KC_RBRC, KC_GRV,                                      KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_PERC, TD(TD_COMMA_SYMBOLS),
       _______, KC_PERC, KC_CIRC, S(KC_COMM), S(KC_DOT), KC_TILD, _______, _______, _______, _______, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
                                  _______, _______, _______, KC_SCLN, KC_EQL,  KC_EQL,  KC_SCLN, KC_DEL, _______, KC_MUTE
     ),
+
 /*
  * Raise Layer: Number keys, media, navigation
  *
@@ -95,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RAISE] = LAYOUT(
     TO(_QWERTY), KC_1, 	  KC_2,    KC_3,    KC_4,    KC_5,                                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
       _______, _______, S(G(KC_LEFT)), S(A(KC_LEFT)), S(A(KC_RIGHT)),  S(G(KC_RIGHT)),                                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, TD(TD_SMCL_NUMS), A(KC_UP),
-      _______, _______, _______, _______, KC_MUTE, KC_VOLD, _______, _______, _______, _______, G(KC_LEFT), A(KC_LEFT), A(KC_RIGHT),  G(KC_RIGHT) , _______, A(KC_DOWN),
+      _______, _______, _______, S(KC_LEFT), S(KC_RIGHT), KC_MUTE, _______, _______, _______, _______, G(KC_LEFT), A(KC_LEFT), A(KC_RIGHT),  G(KC_RIGHT) , _______, A(KC_DOWN),
                                  _______, _______, _______, _______, _______, _______, _______, KC_DEL, _______, KC_MPRV
     ),
 /*
