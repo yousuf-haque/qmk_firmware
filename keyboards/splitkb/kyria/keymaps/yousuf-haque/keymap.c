@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT(
       LT(_RAISE, KC_ESC), KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                                                                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_PIPE,
       KC_TAB,             KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                                                                            KC_H,    KC_J,    KC_K,    KC_L,    TD(TD_SMCL_NUMS), TD(TD_COMMA_SYMBOLS),
-      MT(MOD_LSFT, KC_CAPSLOCK),             KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   LM(_RAISE, MOD_LGUI),    LM(_RAISE, MOD_LALT),                                                    LM(_LOWER, MOD_LGUI), LM(_RAISE, MOD_LGUI), KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MT(MOD_LSFT, KC_MINS),
+      MT(MOD_LSFT, KC_CAPSLOCK),             KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   LM(_RAISE, MOD_LGUI),    LM(_LOWER, MOD_LGUI),                                                    LM(_LOWER, MOD_LCTL), LM(_RAISE, MOD_LGUI), KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MT(MOD_LSFT, KC_MINS),
                                         KC_MPLY, KC_LCPO, MT(MOD_LGUI, KC_BSPC), LT(_RAISE, KC_SPC), LT(_LOWER, KC_ENT),       LT(_LOWER, KC_ENT), LT(_RAISE, KC_BSPC),  MT(MOD_LGUI, KC_SPC), KC_RAPC, KC_MNXT
     ),
 /*
@@ -74,10 +74,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *
  */
     [_LOWER] = LAYOUT(
-    TO(_QWERTY), KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                     _______, _______, _______, _______, _______, KC_BSLS,
-      _______, KC_HASH, KC_DLR, KC_LBRC, KC_RBRC, KC_GRV,                                      KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_PERC, TD(TD_COMMA_SYMBOLS),
-      _______, KC_PERC, KC_CIRC, S(KC_COMM), S(KC_DOT), KC_TILD, _______, _______, _______, _______, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-                                 _______, _______, _______, KC_SCLN, KC_EQL,  KC_EQL,  KC_SCLN, KC_DEL, _______, KC_MUTE
+    TO(_QWERTY), KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                               _______, _______, _______, _______, _______, KC_BSLS,
+      _______, KC_HASH, KC_DLR, KC_LBRC, KC_RBRC, KC_GRV,                                                   KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_PERC, TD(TD_COMMA_SYMBOLS),
+      _______, KC_PERC, KC_CIRC, S(KC_COMM), S(KC_DOT), KC_TILD, _______, _______,         _______, _______, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
+                                 _______, _______, _______, S(KC_TAB), KC_TAB,            S(KC_TAB),  KC_TAB, KC_DEL, _______, KC_MUTE
     ),
 
 /*
